@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PesanMakan.Models.Pesanan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Jumlah")
+            </th>
+            <th>
+                @Html.DisplayName("Total Harga")
+            </th>
+            <th>
+                @Html.DisplayName("Menu")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jumlah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMenuNavigation.IdMenu)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPesanan"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdPesanan"><i class="fas fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPesanan"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
